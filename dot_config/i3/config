@@ -267,7 +267,7 @@ mode "resize" {
 set $launcher "application launcher: [w]eb [e]mails [t]erminal [f]iles [s]team [a]udio"
 bindsym $mod+Return mode $launcher
 mode $launcher {
-    bindsym w         exec --no-startup-id "qutebrowser" mode "default"
+    bindsym w         exec --no-startup-id "firefox" mode "default"
     bindsym e         exec --no-startup-id "thunderbird" mode "default"
     bindsym t         exec --no-startup-id "alacritty" mode "default"
     bindsym s         exec --no-startup-id "steam" mode "default"
