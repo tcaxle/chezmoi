@@ -46,6 +46,7 @@ TEXT
 
 [
 
+{{ if eq .chezmoi.hostname "Fearnley" }}
 #Battery Alert
 ${if_match ${battery_percent BAT0} <= 20 }
 	${if_empty ${exec cat /sys/class/power_supply/BAT0/status | grep 'Discharging'}}
@@ -53,6 +54,7 @@ ${if_match ${battery_percent BAT0} <= 20 }
 		{"full_text": "LOW BATTERY", "urgent": true, "color": "\#da8252"},
 	${endif}
 ${endif}
+{{ end }}
 
 #Free disk space
 { "full_text" : "ROOT ${fs_free /}" , "color" : "\#b2aa87" },
@@ -61,8 +63,13 @@ ${endif}
 #CPU
 { "full_text" : "CPU ${cpu}% ${hwmon 0 temp 1}°C" , "color" : "\#b2aa87" },
 
+{{ if eq .chezmoi.hostname "Fearnley" }}
 #GPU
 { "full_text" : "GPU ${exec nvidia-smi -a | grep Gpu | awk '{print $3}'}% ${exec nvidia-smi -a | grep 'GPU Current Temp' | awk '{print $5}'}°C" , "color" : "\#b2aa87" },
+{{ else if eq .chezmoi.hostname "Phranque" }}
+#GPU
+{ "full_text" : "GPU ${exec nvidia-smi -a | grep Gpu | awk '{print $3}'}% ${exec nvidia-smi -a | grep 'GPU Current Temp' | awk '{print $5}'}°C" , "color" : "\#b2aa87" },
+{{ end }}
 
 #Ram
 { "full_text" : "RAM ${memperc}%" , "color" :
@@ -84,23 +91,45 @@ ${endif}
 #Sound
 { "full_text" : "♪ ${exec pamixer --get-volume } %" , "color" : "\#b2aa87" },
 
+{{ if eq .chezmoi.hostname "Fearnley" }}
 #Brightness
 { "full_text" : "☀ ${exec xbacklight -get } %" , "color" : "\#b2aa87" },
+{{ else if eq .chezmoi.hostname "FitzWilliam" }}
+#Brightness
+{ "full_text" : "☀ ${exec xbacklight -get } %" , "color" : "\#b2aa87" },
+{{ end }}
 
 #SSID
+{{ if eq .chezmoi.hostname "Fearnley" }}
 {"full_text" : ${if_empty ${wireless_essid wlp2s0}}
 "disconnected", "color" : "\#da8252"},
  ${else}
 "${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wlp2s0}", "color" : "\#9fab63"},
 ${endif}
+{{ else if eq .chezmoi.hostname "FitzWilliam" }}
+{"full_text" : ${if_empty ${wireless_essid wlp2s0}}
+"disconnected", "color" : "\#da8252"},
+ ${else}
+"${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wlp2s0}", "color" : "\#9fab63"},
+${endif}
+{{ else if eq .chezmoi.hostname "Phranque" }}
+{"full_text" : "${addrs eno1}", "color" : "\#9fab63"},
+{{ end }}
 
 #Netspeed
 ${if_empty ${exec fping archlinux.org -c 1 -t 300 | grep '0% loss'}}
 { "full_text" : "⇵" , "color" : "\#da8252" },
 ${else}
+{{ if eq .chezmoi.hostname "Fearnley" }}
 { "full_text" : "${downspeed wlp2s0} ⇵ ${upspeed wlp2s0}" , "color" : "\#9fab63" },
+{{ else if eq .chezmoi.hostname "FitzWilliam" }}
+{ "full_text" : "${downspeed wlp2s0} ⇵ ${upspeed wlp2s0}" , "color" : "\#9fab63" },
+{{ else if eq .chezmoi.hostname "Phranque" }}
+{ "full_text" : "${downspeed wlp2s0} ⇵ ${upspeed eno1}" , "color" : "\#9fab63" },
+{{ end }}
 ${endif}
 
+{{ if eq .chezmoi.hostname "Fearnley" }}
 #Battery
 { "full_text": "${if_empty ${exec acpi | grep 'Discharging'}}⬆${else}⬇${endif} ${battery_percent} % ${battery_time}", "color":
 ${if_empty ${exec acpi | grep 'Discharging'}}
@@ -112,6 +141,19 @@ ${else}${if_match ${battery_percent}<50}
 ${else}
 "\#b2aa87"
 ${endif}${endif}${endif}},
+{{ else if eq .chezmoi.hostname "FitzWilliam" }}
+#Battery
+{ "full_text": "${if_empty ${exec acpi | grep 'Discharging'}}⬆${else}⬇${endif} ${battery_percent} % ${battery_time}", "color":
+${if_empty ${exec acpi | grep 'Discharging'}}
+"\#9fab63"
+${else}${if_match ${battery_percent}<20}
+"\#da8252"
+${else}${if_match ${battery_percent}<50}
+"\#d3a061"
+${else}
+"\#b2aa87"
+${endif}${endif}${endif}},
+{{ end }}
 
 #Date
 {"full_text" : "${time %Y/%m/%d} ${time %H:%M:%S}", "color" : "\#b2aa87"}
