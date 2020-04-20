@@ -269,7 +269,13 @@ bindsym $mod+Return mode $launcher
 mode $launcher {
     bindsym w         exec --no-startup-id "firefox" mode "default"
     bindsym e         exec --no-startup-id "thunderbird" mode "default"
+	{{ if eq .chezmoi.hostname "Phranque" }}
     bindsym t         exec --no-startup-id "alacritty" mode "default"
+	{{ else if eq .chezmoi.hostname "Fearnley" }}
+    bindsym t         exec --no-startup-id "alacritty" mode "default"
+	{{ else if eq .chezmoi.hostname "FitzWilliam" }}
+    bindsym t         exec --no-startup-id "konsole" mode "default"
+	{{ end }}
     bindsym s         exec --no-startup-id "steam" mode "default"
     bindsym a         exec --no-startup-id "pavucontrol" mode "default"
     bindsym f         exec --no-startup-id "dolphin" mode "default"
