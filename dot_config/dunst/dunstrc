@@ -1,5 +1,5 @@
 [global]
-    font = Monospace 8
+    font = Monoid Nerd Font 10
 
     # allow a small subset of html markup:
     # <b>bold</b>
@@ -29,7 +29,7 @@
 
     # alignment of message text.
     # Possible values are "left", "center" and "right"
-    alignment = left
+    alignment = right
 
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -83,7 +83,7 @@
     #
     # If this option is set to mouse or keyboard, the monitor option will be
     # ignored.
-    follow = keyboard
+    follow = none
 
     # should a notification popped up from history be sticky or
     # timeout as if it would normally do.
@@ -96,7 +96,7 @@
 
     # Draw a line of 'separatpr_height' pixel height between two notifications.
     # Set to 0 to disable
-    separator_height = 2
+    separator_height = 4
 
     # padding between text and separator
     padding = 8
@@ -110,7 +110,7 @@
     #  * foreground: use the same color as the foreground
     #  * frame: use the same color as the frame.
     #  * anything else will be interpreted as a X color
-    separator_color = frame
+    separator_color = auto
 
     # print a notification on startup
     # This is mainly for error detection, since dbus (re-)starts dunst
