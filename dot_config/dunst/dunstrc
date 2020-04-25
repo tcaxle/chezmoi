@@ -221,3 +221,4 @@
 #    urgency = normal
 #
 
+stack_duplicates = true

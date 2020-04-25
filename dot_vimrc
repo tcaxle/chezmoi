@@ -25,6 +25,11 @@ call plug#begin('~/.vim/plugged')
 	Plug 'airblade/vim-gitgutter'
 	Plug 'godlygeek/tabular'
 	Plug 'ntpeters/vim-better-whitespace'
+	Plug 'xolox/vim-notes'
+	Plug 'xolox/vim-misc'
+	Plug 'jceb/vim-orgmode'
+	Plug 'tpope/vim-speeddating'
+	Plug 'mattn/calendar-vim'
 call plug#end()
 
 " Defaults
