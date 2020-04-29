@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias lg="lazygit"
 
 if [ "$TERM" = "linux" ]; then
 	echo -en '\e]P0262c35' #dblack
