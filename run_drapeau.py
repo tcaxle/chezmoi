@@ -40,7 +40,6 @@ def main():
 
     # Add colorscheme to chezmoi config data
     chezmoi_config_dict["data"]["drapeau"]["colors"] = drapeau_color_scheme_dict
-    print(chezmoi_config_dict)
 
     # Write out modified dict to chezmoi config file
     with open(chezmoi_config_file, 'w') as f:
@@ -48,4 +47,4 @@ def main():
 
     return "=== SUCCESS ==="
 
-print(main())
+main()
