@@ -31,19 +31,19 @@ draw_bold_text_with_bright_colors: true
 font:
   # The normal (roman) font face to use.
   normal:
-    family: Monoid Nerd Font Mono
+    family: {{ .fonts.mono }}
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: Monoid Nerd Font Mono
+    family: {{ .fonts.mono }}
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: Monoid Nerd Font Mono
+    family: {{ .fonts.mono }}
     # Style can be specified to pick a specific face.
     # style: Italic
 
@@ -61,32 +61,30 @@ custom_cursor_colors: false
 colors:
   # Default colors
   primary:
-    # hard contrast: background = '0x1d2021'
-    background: '0x262c35'
-    # soft contrast: background = '0x32302f'
-    foreground: '0xb2aa87'
+    background: '0x{{ .drapeau.colors.background }}'
+    foreground: '0x{{ .drapeau.colors.foreground }}'
 
   # Normal colors
   normal:
-    black:   '0x262c35'
-    red:     '0x8b5335'
-    green:   '0x575e36'
-    yellow:  '0x87663e'
-    blue:    '0x2e485c'
-    magenta: '0x865a63'
-    cyan:    '0x277468'
-    white:   '0x726d56'
+    black:   '0x{{ .drapeau.colors.d_black }}'
+    red:     '0x{{ .drapeau.colors.d_red }}'
+    green:   '0x{{ .drapeau.colors.d_green }}'
+    yellow:  '0x{{ .drapeau.colors.d_yellow }}'
+    blue:    '0x{{ .drapeau.colors.d_blue }}'
+    magenta: '0x{{ .drapeau.colors.d_magenta }}'
+    cyan:    '0x{{ .drapeau.colors.d_cyan }}'
+    white:   '0x{{ .drapeau.colors.d_white }}'
 
   # Bright colors
   bright:
-    black:   '0x444f60'
-    red:     '0xda8252'
-    green:   '0x9fab63'
-    yellow:  '0xd3a061'
-    blue:    '0x48718f'
-    magenta: '0xb87b87'
-    cyan:    '0x3cb5a3'
-    white:   '0xb2aa87'
+    black:   '0x{{ .drapeau.colors.l_black }}'
+    red:     '0x{{ .drapeau.colors.l_red }}'
+    green:   '0x{{ .drapeau.colors.l_green }}'
+    yellow:  '0x{{ .drapeau.colors.l_yellow }}'
+    blue:    '0x{{ .drapeau.colors.l_blue }}'
+    magenta: '0x{{ .drapeau.colors.l_magenta }}'
+    cyan:    '0x{{ .drapeau.colors.l_cyan }}'
+    white:   '0x{{ .drapeau.colors.l_white }}'
 
 # Visual Bell
 #

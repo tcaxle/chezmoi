@@ -13,15 +13,13 @@
 #          __/ |                                                            __/ | #
 #         |___/                                                            |___/  #
 ###################################################################################
-# Last Edit: 2020/01/31
-###################################################################################
 
 set $mod Mod4
 set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Fira Sans:size=8
+font pango:{{ .fonts.sans }} {{ .fonts.size }}
 
 ############################################################
 #  _  __            ____  _           _ _                  #
@@ -319,24 +317,24 @@ bar {
 	position top
 	colors {
         background #{{ .drapeau.colors.background }}
-        statusline #b2aa87
-        separator #b2aa87
+        statusline #{{ .drapeau.colors.l_white }}
+        separator  #{{ .drapeau.colors.l_white }}
 
-		#class             border  backgr. text
-        focused_workspace  #48718f #2e485c #b2aa87
-        active_workspace   #48718f #2e485c #b2aa87
-        inactive_workspace #444f60 #262c35 #726d56
-        urgent_workspace   #da8252 #8b5335 #b2aa87
+		#class             #border                        #background                       #text
+        focused_workspace  #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.background }}
+        active_workspace   #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.l_white }}
+        inactive_workspace #{{ .drapeau.colors.d_white }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_white }}
+        urgent_workspace   #{{ .drapeau.colors.d_red }}   #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_red }}
     }
 }
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #48718f #2e485c #b2aa87 #2e485c   #48718f
-client.focused_inactive #48718f #2e485c #b2aa87 #2e485c   #48718f
-client.unfocused        #444f60 #262c35 #726d56 #262c35   #444f60
-client.urgent           #da8252 #8b5335 #b2aa87 #8b5335   #da8252
+#class                  #border                        #background                       #text                             #indicator                     #child_border
+client.focused          #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.background }} #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}
+client.focused_inactive #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}
+client.unfocused        #{{ .drapeau.colors.d_white }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_white }}    #{{ .drapeau.colors.d_white }} #{{ .drapeau.colors.d_white }}
+client.urgent           #{{ .drapeau.colors.d_red }}   #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_red }}      #{{ .drapeau.colors.d_red }}   #{{ .drapeau.colors.d_red }}
 
-client.background       #262c35
+client.background       #{{ .drapeau.colors.background }}
 
 ###############################################################
 #  _____       _ _   _       _ _           _   _              #
