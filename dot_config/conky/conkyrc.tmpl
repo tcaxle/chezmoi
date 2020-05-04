@@ -104,16 +104,16 @@ ${endif}
 {"full_text" : ${if_empty ${wireless_essid wlp2s0}}
 "disconnected", "color" : "\#{{ .drapeau.colors.d_red }}"},
  ${else}
-"${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wlp2s0}", "color" : "\#{{ .drapeau.colors.d_green }}"},
+"${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wg0}", "color" : "\#{{ .drapeau.colors.d_green }}"},
 ${endif}
 {{ else if eq .chezmoi.hostname "FitzWilliam" }}
 {"full_text" : ${if_empty ${wireless_essid wlp2s0}}
 "disconnected", "color" : "\#{{ .drapeau.colors.d_red }}"},
  ${else}
-"${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wlp2s0}", "color" : "\#{{ .drapeau.colors.d_green }}"},
+"${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wg0}", "color" : "\#{{ .drapeau.colors.d_green }}"},
 ${endif}
 {{ else if eq .chezmoi.hostname "Phranque" }}
-{"full_text" : "${addrs eno1}", "color" : "\#{{ .drapeau.colors.d_green }}"},
+{"full_text" : "${addrs wg0}", "color" : "\#{{ .drapeau.colors.d_green }}"},
 {{ end }}
 
 #Netspeed
@@ -121,11 +121,11 @@ ${if_empty ${exec fping archlinux.org -c 1 -t 300 | grep '0% loss'}}
 { "full_text" : "⇵" , "color" : "\#{{ .drapeau.colors.d_red }}" },
 ${else}
 {{ if eq .chezmoi.hostname "MaxFearnley" }}
-{ "full_text" : "${downspeed wlp2s0} ⇵ ${upspeed wlp2s0}" , "color" : "\#{{ .drapeau.colors.d_green }}" },
+{ "full_text" : "${downspeed wg0} ⇵ ${upspeed wg0}" , "color" : "\#{{ .drapeau.colors.d_green }}" },
 {{ else if eq .chezmoi.hostname "FitzWilliam" }}
-{ "full_text" : "${downspeed wlp2s0} ⇵ ${upspeed wlp2s0}" , "color" : "\#{{ .drapeau.colors.d_green }}" },
+{ "full_text" : "${downspeed wg0} ⇵ ${upspeed wg0}" , "color" : "\#{{ .drapeau.colors.d_green }}" },
 {{ else if eq .chezmoi.hostname "Phranque" }}
-{ "full_text" : "${downspeed wlp2s0} ⇵ ${upspeed eno1}" , "color" : "\#{{ .drapeau.colors.d_green }}" },
+{ "full_text" : "${downspeed wg0} ⇵ ${upspeed wg0}" , "color" : "\#{{ .drapeau.colors.d_green }}" },
 {{ end }}
 ${endif}
 
