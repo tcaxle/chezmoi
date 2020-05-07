@@ -269,16 +269,21 @@ mode "resize" {
 
 #Application Launcher
 set $launcher "application launcher: [w]eb [e]mails [t]erminal [f]iles [s]team [a]udio"
-bindsym $mod+Return mode $launcher
+bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Shift+Return exec --no-startup-id NEW_MUX=TRUE alacritty && unset NEW_MUX
+bindsym $mod+O mode $launcher
 mode $launcher {
     bindsym w         exec --no-startup-id "firefox" mode "default"
     bindsym e         exec --no-startup-id "thunderbird" mode "default"
 	{{ if eq .chezmoi.hostname "Phranque" }}
     bindsym t         exec --no-startup-id "alacritty" mode "default"
+    bindsym Return    exec --no-startup-id "alacritty" mode "default"
 	{{ else if eq .chezmoi.hostname "MaxFearnley" }}
     bindsym t         exec --no-startup-id "alacritty" mode "default"
+    bindsym Return    exec --no-startup-id "alacritty" mode "default"
 	{{ else if eq .chezmoi.hostname "FitzWilliam" }}
     bindsym t         exec --no-startup-id "konsole" mode "default"
+    bindsym Return    exec --no-startup-id "konsole" mode "default"
 	{{ end }}
     bindsym s         exec --no-startup-id "steam" mode "default"
     bindsym a         exec --no-startup-id "pavucontrol" mode "default"
