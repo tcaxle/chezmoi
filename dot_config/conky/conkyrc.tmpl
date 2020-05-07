@@ -104,7 +104,7 @@ ${endif}
 {"full_text" : ${if_empty ${wireless_essid wlp2s0}}
 "disconnected", "color" : "\#{{ .drapeau.colors.d_red }}"},
  ${else}
-"${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wwlp2s0}", "color" : "\#{{ .drapeau.colors.d_green }}"},
+"${wireless_essid wlp2s0} ${wireless_link_qual_perc wlp2s0}% ${addrs wlp2s0}", "color" : "\#{{ .drapeau.colors.d_green }}"},
 ${endif}
 {{ else if eq .chezmoi.hostname "FitzWilliam" }}
 {"full_text" : ${if_empty ${wireless_essid wlp2s0}}
