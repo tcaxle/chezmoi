@@ -121,5 +121,7 @@ if [ "$TERM" = "linux" ]; then
 	clear
 fi
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-	tmux a -t default || exec tmux new -s default && exit;
+	tmux new -d -s default
+	tmux new -d -s menu
+	tmux a -t menu \; choose-tree -GZswrf "#{!=:#{session_name},menu}"
 fi
