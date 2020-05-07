@@ -141,6 +141,9 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Bar toggle
 bindsym $mod+B bar mode toggle
 
+# Gaps toggle
+bindsym $mod+G gaps inner current toggle 5
+
 #############################################################
 # __          __        _                                   #
 # \ \        / /       | |                                  #
@@ -328,11 +331,11 @@ bar {
     }
 }
 
-#class                  #border                        #background                       #text                             #indicator                     #child_border
-client.focused          #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.background }} #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}
-client.focused_inactive #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}
-client.unfocused        #{{ .drapeau.colors.d_white }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_white }}    #{{ .drapeau.colors.d_white }} #{{ .drapeau.colors.d_white }}
-client.urgent           #{{ .drapeau.colors.d_red }}   #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_red }}      #{{ .drapeau.colors.d_red }}   #{{ .drapeau.colors.d_red }}
+#class                  #border                           #background                       #text                             #indicator                     #child_border
+client.focused          #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.background }} #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}
+client.focused_inactive #{{ .drapeau.colors.background }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.l_white }}    #{{ .drapeau.colors.l_white }} #{{ .drapeau.colors.l_white }}
+client.unfocused        #{{ .drapeau.colors.background }} #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_white }}    #{{ .drapeau.colors.d_white }} #{{ .drapeau.colors.d_white }}
+client.urgent           #{{ .drapeau.colors.d_red }}      #{{ .drapeau.colors.d_red }}      #{{ .drapeau.colors.background }} #{{ .drapeau.colors.d_red }}   #{{ .drapeau.colors.d_red }}
 
 client.background       #{{ .drapeau.colors.background }}
 
@@ -393,7 +396,7 @@ exec --no-startup-id syncthing -no-browser
 for_window [class="^.*"] border none
 
 #Configure Gaps
-gaps inner 8
+gaps inner 0
 gaps outer 0
 smart_gaps on
 smart_borders no_gaps
