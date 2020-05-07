@@ -1,5 +1,5 @@
 #!/usr/bin/python
-print("=== Chezmoi-Drapeau: Updating System Colors ===")
+#print("=== Chezmoi-Drapeau: Updating System Colors ===")
 import os
 import toml
 
