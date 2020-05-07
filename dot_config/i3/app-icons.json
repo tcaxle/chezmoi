@@ -1,6 +1,7 @@
 {
     "firefox": "firefox",
     "telegramdesktop": "telegram-plane",
+    "slack": "slack",
 	"caprine": "facebook-messenger",
 	"wine": "windows",
     "alacritty": "desktop",
@@ -22,5 +23,6 @@
 	"qutebrowser": "globe",
 	"pavucontrol": "volume-up",
 	"arandr": "window-restore",
-	"zoom": "video"
+	"zoom": "video",
+	"google-chrome": "chrome",
 }
