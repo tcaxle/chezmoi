@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-syntastic/syntastic'
 	Plug 'tpope/vim-fugitive'
 	Plug 'yggdroot/indentline'
+	Plug 'chrisbra/csv.vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'tpope/vim-sensible'
