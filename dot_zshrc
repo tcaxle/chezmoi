@@ -126,6 +126,6 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] &&
 	else
 		tmux new -d -s default
 		tmux new -d -s menu
-		tmux a -t menu \; choose-tree -GZswrf "#{!=:#{session_name},menu}"
+		tmux a -t menu \; choose-tree -GZswf "#{!=:#{session_name},menu}"
 	fi
 fi
