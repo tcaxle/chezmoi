@@ -129,31 +129,29 @@ ${else}
 {{ end }}
 ${endif}
 
-{{ if eq .chezmoi.hostname "MaxFearnley" }}
-#Battery
-{ "full_text": "${if_empty ${exec acpi | grep 'Discharging'}}⬆${else}⬇${endif} ${battery_percent} % ${battery_time}", "color":
-${if_empty ${exec acpi | grep 'Discharging'}}
-"\#{{ .drapeau.colors.l_white }}"
-${else}${if_match ${battery_percent}<20}
-"\#{{ .drapeau.colors.d_red }}"
-${else}${if_match ${battery_percent}<50}
-"\#{{ .drapeau.colors.d_yellow }}"
-${else}
-"\#{{ .drapeau.colors.d_green }}"
-${endif}${endif}${endif}},
-{{ else if eq .chezmoi.hostname "FitzWilliam" }}
-#Battery
-{ "full_text": "${if_empty ${exec acpi | grep 'Discharging'}}⬆${else}⬇${endif} ${battery_percent} % ${battery_time}", "color":
-${if_empty ${exec acpi | grep 'Discharging'}}
-"\#{{ .drapeau.colors.l_white }}"
-${else}${if_match ${battery_percent}<20}
-"\#{{ .drapeau.colors.d_red }}"
-${else}${if_match ${battery_percent}<50}
-"\#{{ .drapeau.colors.d_yellow }}"
-${else}
-"\#{{ .drapeau.colors.d_green }}"
-${endif}${endif}${endif}},
-{{ end }}
+{ "full_text" :
+	${if_match ${battery_percent}<10}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_red }}"
+	$${else}{if_match ${battery_percent}<20}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_red }}"
+	$${else}{if_match ${battery_percent}<30}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_red }}"
+	${else}${if_match ${battery_percent}<40}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_yellow }}"
+	$${else}{if_match ${battery_percent}<50}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_red }}"
+	${else}${if_match ${battery_percent}<60}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_yellow }}"
+	$${else}{if_match ${battery_percent}<70}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_red }}"
+	${else}${if_match ${battery_percent}<80}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_green }}"
+	$${else}{if_match ${battery_percent}<90}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_red }}"
+	${else}${if_match ${battery_percent}<=100}
+	"${if_empty ${exec acpi | grep 'Discharging'}} ${else}${endif} ${battery_percent} % ${battery_time}", "color" : "\#{{ .drapeau.colors.d_green }}"
+	${endif}${endif}${endif}${endif}${endif}
+},
 
 #Date
 {"full_text" : "${time %Y/%m/%d} ${time %H:%M:%S}", "color" : "\#{{ .drapeau.colors.l_white }}"}

@@ -60,7 +60,6 @@ let g:strip_whitespace_on_save=1
 set linebreak
 set conceallevel=0
 
-
 " Comment Banner
 " CommentBannerMapping g1 :CommentBanner --pattern #,1#,#  --width 80  --comment true
 " CommentBannerMapping g2 :CommentBanner --pattern =,1-,=  --width 80  --comment true
